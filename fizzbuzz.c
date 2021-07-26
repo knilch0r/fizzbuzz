@@ -5,7 +5,7 @@
 #define MAX 100
 #endif
 
-#if MAX + 1 > ((1 << 10) - 1)
+#if MAX >= ((1 << 10) - 1)
 #error MAX too high
 #else
 #define B0 1
@@ -29,7 +29,7 @@ int main(void) {
 #endif
 #else
 
-#if I < MAX+1
+#if I <= MAX
 #if !(I % 15)
 "FizzBuzz"
 #elif !(I % 3)
