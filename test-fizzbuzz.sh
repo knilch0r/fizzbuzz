@@ -4,7 +4,11 @@ if [ -z "$NUM" ] ; then
 	echo nope ; exit 1
 fi
 set -e
-gcc -DMAX=$NUM -Wall -fmax-include-depth=$(($NUM + 100)) fizzbuzz.c -o testn-$NUM
+if [ "$NUM" -gt 180 ] ; then
+  gcc -DMAX=$NUM -Wall -fmax-include-depth=$(($NUM + 100)) fizzbuzz.c -o testn-$NUM
+else
+  gcc -DMAX=$NUM -Wall fizzbuzz.c -o testn-$NUM
+fi
 ./testn-$NUM > testn-$NUM.out
 ./test-fizzbuzz-helper $NUM > testn-$NUM.ref
 if diff -u testn-$NUM.out testn-$NUM.ref ; then
