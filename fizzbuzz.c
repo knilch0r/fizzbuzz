@@ -2,11 +2,11 @@
 #ifndef B0
 #define I (((((((((((((((B15*2|B14)*2|B13)*2|B12)*2|B11)*2|B10)*2|B9)*2|B8)*2|B7)*2|B6)*2|B5)*2|B4)*2|B3)*2|B2)*2|B1)*2|B0)
 #define F __FILE__
-#ifndef MAX
-#define MAX 100
+#ifndef N
+#define N 100
 #endif
-#if MAX >= ((1 << 16) - 1)
-#error MAX too high
+#if N >= ((1 << 16) - 1)
+#error N too high
 #else
 #define B0 1
 #define B1 0
@@ -30,7 +30,7 @@ int main(void) { puts(
 ); return 0; }
 #endif
 #else
-#if I <= MAX
+#if I <= N
 #if !(I % 15)
 "FizzBuzz"
 #elif !(I % 3)
@@ -41,7 +41,7 @@ int main(void) { puts(
 #define P I
 #include F
 #endif
-#if I < MAX
+#if I < N
 "\n"
 #endif
 #if B0 == 1
