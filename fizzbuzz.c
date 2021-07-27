@@ -1,3 +1,4 @@
+#ifndef PRINTNUM
 #ifndef B0
 
 #define I (((((((((((((((B15*2|B14)*2|B13)*2|B12)*2|B11)*2|B10)*2|B9)*2|B8)*2|B7)*2|B6)*2|B5)*2|B4)*2|B3)*2|B2)*2|B1)*2|B0)
@@ -44,7 +45,7 @@ int main(void) {
 "Buzz"
 #else
 #define PRINTNUM I
-#include "printnum.h"
+#include __FILE__
 #endif
 
 #if I < MAX
@@ -168,5 +169,73 @@ int main(void) {
 #include __FILE__
 #endif
 
+#endif
+#endif
+
+#else
+
+#ifndef PRINTNUM_DOIT
+
+#if PRINTNUM < 0 || PRINTNUM > 1000000
+#if PRINTNUM < 0
+"--------"
+#else
+"########"
+#endif
+#else
+
+#define PRINTNUM_DOIT
+#if PRINTNUM > 100000
+#define PRINTNUM_DIV 100000
+#include __FILE__
+#endif
+#if PRINTNUM > 10000
+#define PRINTNUM_DIV 10000
+#include __FILE__
+#endif
+#if PRINTNUM > 1000
+#define PRINTNUM_DIV 1000
+#include __FILE__
+#endif
+#if PRINTNUM > 100
+#define PRINTNUM_DIV 100
+#include __FILE__
+#endif
+#if PRINTNUM > 10
+#define PRINTNUM_DIV 10
+#include __FILE__
+#endif
+#define PRINTNUM_DIV 1
+#include __FILE__
+
+#undef PRINTNUM_DOIT
+#undef PRINTNUM
+#endif
+
+#else
+
+#if PRINTNUM / PRINTNUM_DIV % 10 == 0
+"0"
+#elif PRINTNUM / PRINTNUM_DIV % 10 == 1
+"1"
+#elif PRINTNUM / PRINTNUM_DIV % 10 == 2
+"2"
+#elif PRINTNUM / PRINTNUM_DIV % 10 == 3
+"3"
+#elif PRINTNUM / PRINTNUM_DIV % 10 == 4
+"4"
+#elif PRINTNUM / PRINTNUM_DIV % 10 == 5
+"5"
+#elif PRINTNUM / PRINTNUM_DIV % 10 == 6
+"6"
+#elif PRINTNUM / PRINTNUM_DIV % 10 == 7
+"7"
+#elif PRINTNUM / PRINTNUM_DIV % 10 == 8
+"8"
+#else
+"9"
+#endif
+
+#undef PRINTNUM_DIV
 #endif
 #endif
