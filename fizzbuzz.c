@@ -91,7 +91,7 @@ int main(void) { puts(
 #define B14 0
 #if B15 == 1
 #error overflow
-#define OVF
+#define O
 #else
 #undef B15
 #define B15 1
@@ -156,7 +156,7 @@ int main(void) { puts(
 #undef B0
 #define B0 1
 #endif
-#ifndef OVF
+#ifndef O
 #include F
 #endif
 #endif
