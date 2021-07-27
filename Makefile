@@ -12,9 +12,8 @@ testtools: fizzbuzz.c test-fizzbuzz-helper test-fizzbuzz.sh
 testn-% : testtools
 	./test-fizzbuzz.sh $@
 
-tests: test-printnum $(TESTS)
-	./test-printnum
+tests: $(TESTS)
 
 clean:
-	rm -f $(TESTS) test-printnum fizzbuzz test-fizzbuzz-helper testtools
+	rm -f $(TESTS) fizzbuzz test-fizzbuzz-helper testtools
 
