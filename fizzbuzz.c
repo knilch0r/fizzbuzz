@@ -1,11 +1,10 @@
-#ifndef PRINTNUM
+#ifndef P
 #ifndef B0
-
 #define I (((((((((((((((B15*2|B14)*2|B13)*2|B12)*2|B11)*2|B10)*2|B9)*2|B8)*2|B7)*2|B6)*2|B5)*2|B4)*2|B3)*2|B2)*2|B1)*2|B0)
+#define F __FILE__
 #ifndef MAX
 #define MAX 100
 #endif
-
 #if MAX >= ((1 << 16) - 1)
 #error MAX too high
 #else
@@ -25,17 +24,12 @@
 #define B13 0
 #define B14 0
 #define B15 0
-
 #include <stdio.h>
-int main(void) {
-	puts(
-#include __FILE__
-	);
-	return 0;
-}
+int main(void) { puts(
+#include F
+); return 0; }
 #endif
 #else
-
 #if I <= MAX
 #if !(I % 15)
 "FizzBuzz"
@@ -44,14 +38,12 @@ int main(void) {
 #elif !(I % 5)
 "Buzz"
 #else
-#define PRINTNUM I
-#include __FILE__
+#define P I
+#include F
 #endif
-
 #if I < MAX
 "\n"
 #endif
-
 #if B0 == 1
 #undef B0
 #define B0 0
@@ -164,78 +156,68 @@ int main(void) {
 #undef B0
 #define B0 1
 #endif
-
 #ifndef OVF
-#include __FILE__
-#endif
-
+#include F
 #endif
 #endif
-
+#endif
 #else
-
-#ifndef PRINTNUM_DOIT
-
-#if PRINTNUM < 0 || PRINTNUM > 1000000
-#if PRINTNUM < 0
+#ifndef PG
+#if P < 0 || P > 1000000
+#if P < 0
 "--------"
 #else
 "########"
 #endif
 #else
-
-#define PRINTNUM_DOIT
-#if PRINTNUM > 100000
-#define PRINTNUM_DIV 100000
-#include __FILE__
+#define PG
+#if P > 100000
+#define PD 100000
+#include F
 #endif
-#if PRINTNUM > 10000
-#define PRINTNUM_DIV 10000
-#include __FILE__
+#if P > 10000
+#define PD 10000
+#include F
 #endif
-#if PRINTNUM > 1000
-#define PRINTNUM_DIV 1000
-#include __FILE__
+#if P > 1000
+#define PD 1000
+#include F
 #endif
-#if PRINTNUM > 100
-#define PRINTNUM_DIV 100
-#include __FILE__
+#if P > 100
+#define PD 100
+#include F
 #endif
-#if PRINTNUM > 10
-#define PRINTNUM_DIV 10
-#include __FILE__
+#if P > 10
+#define PD 10
+#include F
 #endif
-#define PRINTNUM_DIV 1
-#include __FILE__
-
-#undef PRINTNUM_DOIT
-#undef PRINTNUM
+#define PD 1
+#include F
+#undef PG
+#undef P
 #endif
-
 #else
-
-#if PRINTNUM / PRINTNUM_DIV % 10 == 0
+#if P / PD % 10 == 0
 "0"
-#elif PRINTNUM / PRINTNUM_DIV % 10 == 1
+#elif P / PD % 10 == 1
 "1"
-#elif PRINTNUM / PRINTNUM_DIV % 10 == 2
+#elif P / PD % 10 == 2
 "2"
-#elif PRINTNUM / PRINTNUM_DIV % 10 == 3
+#elif P / PD % 10 == 3
 "3"
-#elif PRINTNUM / PRINTNUM_DIV % 10 == 4
+#elif P / PD % 10 == 4
 "4"
-#elif PRINTNUM / PRINTNUM_DIV % 10 == 5
+#elif P / PD % 10 == 5
 "5"
-#elif PRINTNUM / PRINTNUM_DIV % 10 == 6
+#elif P / PD % 10 == 6
 "6"
-#elif PRINTNUM / PRINTNUM_DIV % 10 == 7
+#elif P / PD % 10 == 7
 "7"
-#elif PRINTNUM / PRINTNUM_DIV % 10 == 8
+#elif P / PD % 10 == 8
 "8"
 #else
 "9"
 #endif
-
-#undef PRINTNUM_DIV
+#undef PD
 #endif
 #endif
